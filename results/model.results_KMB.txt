@@ -1,0 +1,13 @@
+Variable	Predictor	estimate	std.error	statistic	df	p.value
+Richness	Mean temperature	0.018	0.016	1.108	12.857	0.288
+Richness	Mean humidity	0.006	0.006	0.894	26.528	0.380
+Richness	Canopy cover	-0.005	0.012	-0.390	37.215	0.699
+Richness	Understory height	0.000	0.001	-0.430	38.342	0.670
+Dominance	Mean temperature	0.161	0.191	0.844	22.779	0.407
+Dominance	Mean humidity	0.081	0.071	1.152	35.382	0.257
+Dominance	Canopy cover	-0.103	0.125	-0.827	36.833	0.414
+Dominance	Understory height	-0.008	0.006	-1.242	37.349	0.222
+Density	Mean temperature	-0.029	0.053	-0.555		0.579
+Density	Mean humidity	0.046	0.026	1.732		0.083
+Density	Canopy cover	-0.117	0.040	-2.929		0.003
+Density	Understory height	-0.007	0.002	-3.621		0.0003

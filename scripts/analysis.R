@@ -82,12 +82,20 @@ nmds
 nmds.scores <- as.data.frame(nmds$points)
 nmds.scores <- nmds.scores %>% 
   mutate(site = preds$site...1, 
-         disturbance = preds$disturbance)
+         disturbance = preds$disturbance) %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "alto", "High")) %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "medio", "Intermediate")) %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "ausente", "Low")) %>% 
+  rename(Disturbance = disturbance)
 teste <- nmds.scores %>%
-  group_by(disturbance) %>%
+  group_by(Disturbance) %>%
   slice(chull(MDS1,MDS2))
 
-vec.sp <- envfit(nmds$points, correl, perm=1000)
+envs <- preds %>% 
+  select(mean.temperature,mean.humidity,canopy_cover,understory_height)
+
+vec.sp <- envfit(nmds$points, envs, perm=1000)
+
 vec.sp.df<- as.data.frame(vec.sp$vectors$arrows*sqrt(vec.sp$vectors$r))
 vec.sp.df$species <- rownames(vec.sp.df)
 vec.sp.df <- vec.sp.df %>% 
@@ -97,20 +105,21 @@ vec.sp.df <- vec.sp.df %>%
   mutate(species = replace(species, species == "understory_height", "Understory height")) %>% 
   slice(-1)
   
-
-ggplot(nmds.scores, mapping = aes(x = MDS1, y = MDS2, colour = disturbance, fill= disturbance, size=I(1))) + geom_point()+
+#png('results/NMDS.png', units="in", width=5, height=5, res=300)
+ggplot(nmds.scores, mapping = aes(x = MDS1, y = MDS2, colour = Disturbance, fill= Disturbance, size=I(1))) + geom_point()+
   geom_vline(xintercept=0, color="black", linetype="dotted") +
   geom_hline(yintercept=0, color="black", linetype="dotted") +
-  scale_color_manual(values=c("#D55E00","#CC79A7","#0072B2"))+
-  scale_fill_manual(values=c("#D55E00","#CC79A7","#0072B2"))+
+  scale_color_manual(values=c("#D55E00","#0072B2","#CC79A7"))+
+  scale_fill_manual(values=c("#D55E00","#0072B2","#CC79A7"))+
   theme_light()+theme(panel.grid.major = element_blank(),
                       panel.grid.minor = element_blank(),
-                      legend.position = c(1,1),
+                      legend.position = "bottom",
                       panel.background = element_blank())+
   geom_polygon(data = teste, alpha = 0.2)+
   geom_segment(data=vec.sp.df,mapping =  aes(x=0,xend=MDS1,y=0,yend=MDS2),
                arrow = arrow(length = unit(0.2, "cm")),inherit.aes = FALSE, colour="black", linewidth = 0.5) + 
   geom_text_repel(data=vec.sp.df,mapping =  aes(x=MDS1,y=MDS2,label=species),size=3, inherit.aes = FALSE)
+#dev.off()
 
 # merging all variables ----
 data <- merge(preds, diversities, by.x = "sampling", by.y = "sampling")
@@ -119,8 +128,15 @@ data <- bind_cols(data, nmds$points) %>%
   rename(site = site...2) 
   
 correl <- data %>% 
-  select(mean.temperature,mean.humidity,canopy_cover,understory_height)
-cor(correl)
+  select(mean.temperature,mean.humidity,canopy_cover,understory_height) %>% 
+  rename(`Mean temperature`= mean.temperature,
+         `Mean humidity` = mean.humidity, 
+         `Canopy cover`= canopy_cover,
+         `Understory height`= understory_height)
+correl <- cor(correl)
+#png('results/correlation.png', units="in", width=4, height=4, res=300)
+corrplot::corrplot(correl, method = 'number', col = 'black')
+#dev.off()
 
 # models -----
 rr <- lmer(rarefy ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data = data)
@@ -129,6 +145,8 @@ plot(rr)
 performance::check_predictions(rr)
 performance::check_residuals(rr)
 performance::model_performance(rr)
+rr.res <- broom.mixed::tidy(rr, effects="fixed")%>% 
+  mutate(factor = "rr")
 
 simps <- lmer(invsimp.Q2 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data = data)
 summary(simps)
@@ -136,6 +154,8 @@ plot(simps)
 performance::check_predictions(simps)
 performance::check_residuals(simps)
 performance::model_performance(simps)
+simps.res <- broom.mixed::tidy(simps, effects="fixed")%>% 
+  mutate(factor = "simps")
 
 abund <- glmer.nb(density.abund ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), family = "poisson",data = data)
 summary(abund)
@@ -143,17 +163,25 @@ plot(abund)
 performance::check_predictions(abund)
 performance::check_residuals(abund)
 performance::model_performance(abund)
+abund.res <- broom.mixed::tidy(abund, effects="fixed") %>% 
+  mutate(factor = "abund")
 
-composicao <- lmer(MDS1 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data=data)
-summary(composicao)
-plot(composicao)
-performance::check_predictions(composicao)
-performance::check_residuals(composicao)
-performance::model_performance(composicao)
 
-composicao2 <- lmer(MDS2 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data=data)
-summary(composicao2)
-plot(composicao2)
-performance::check_predictions(composicao2)
-performance::check_residuals(composicao2)
-performance::model_performance(composicao2)
+results <- bind_rows(rr.res,simps.res,abund.res) %>% 
+  mutate(across(where(is.numeric), round, 4))
+#write.table(results, "results/model.results.txt")
+
+# non-used compisition tests -----
+# composicao <- lmer(MDS1 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data=data)
+# summary(composicao)
+# plot(composicao)
+# performance::check_predictions(composicao)
+# performance::check_residuals(composicao)
+# performance::model_performance(composicao)
+# 
+# composicao2 <- lmer(MDS2 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data=data)
+# summary(composicao2)
+# plot(composicao2)
+# performance::check_predictions(composicao2)
+# performance::check_residuals(composicao2)
+# performance::model_performance(composicao2)

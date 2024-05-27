@@ -1,0 +1,5 @@
+	MDS1	MDS2	r2	Pr(>r)
+Mean temperature	-0.3013	0.9535	0.0886	0.1339
+Mean humidity	-0.5113	0.8594	0.278	0.002
+Canopy cover	-0.9213	-0.3889	0.3233	0.002
+Understory height	-0.9987	-0.0508	0.361	0.001
