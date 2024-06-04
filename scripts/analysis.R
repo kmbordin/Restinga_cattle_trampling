@@ -109,8 +109,8 @@ vec.sp.df <- vec.sp.df %>%
 ggplot(nmds.scores, mapping = aes(x = MDS1, y = MDS2, colour = Disturbance, fill= Disturbance, size=I(1))) + geom_point()+
   geom_vline(xintercept=0, color="black", linetype="dotted") +
   geom_hline(yintercept=0, color="black", linetype="dotted") +
-  scale_color_manual(values=c("#D55E00","#0072B2","#CC79A7"))+
-  scale_fill_manual(values=c("#D55E00","#0072B2","#CC79A7"))+
+  scale_color_manual(values=c("#D55E00","#CC79A7","#0072B2"))+
+  scale_fill_manual(values=c("#D55E00","#CC79A7","#0072B2"))+
   theme_light()+theme(panel.grid.major = element_blank(),
                       panel.grid.minor = element_blank(),
                       legend.position = "bottom",
