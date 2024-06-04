@@ -84,7 +84,7 @@ nmds.scores <- nmds.scores %>%
   mutate(site = preds$site...1, 
          disturbance = preds$disturbance) %>% 
   mutate(disturbance = replace(disturbance, disturbance == "alto", "High")) %>% 
-  mutate(disturbance = replace(disturbance, disturbance == "medio", "Intermediate")) %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "medio", "Medium")) %>% 
   mutate(disturbance = replace(disturbance, disturbance == "ausente", "Low")) %>% 
   rename(Disturbance = disturbance)
 teste <- nmds.scores %>%
