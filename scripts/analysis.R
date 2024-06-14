@@ -104,7 +104,10 @@ vec.sp.df <- vec.sp.df %>%
   mutate(species = replace(species, species == "canopy_cover", "Canopy cover")) %>%
   mutate(species = replace(species, species == "understory_height", "Understory height")) %>% 
   slice(-1)
-  
+permanova = adonis2(community~disturbance, data=preds, permutations = 999, method = "bray")
+library(pairwiseAdonis)
+pairwise.adonis2(community~disturbance, data=preds, permutations = 999)
+
 #png('results/NMDS.png', units="in", width=5, height=5, res=300)
 ggplot(nmds.scores, mapping = aes(x = MDS1, y = MDS2, colour = Disturbance, fill= Disturbance, size=I(1))) + geom_point()+
   geom_vline(xintercept=0, color="black", linetype="dotted") +
