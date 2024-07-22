@@ -173,18 +173,3 @@ abund.res <- broom.mixed::tidy(abund, effects="fixed") %>%
 results <- bind_rows(rr.res,simps.res,abund.res) %>% 
   mutate(across(where(is.numeric), round, 4))
 #write.table(results, "results/model.results.txt")
-
-# non-used compisition tests -----
-# composicao <- lmer(MDS1 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data=data)
-# summary(composicao)
-# plot(composicao)
-# performance::check_predictions(composicao)
-# performance::check_residuals(composicao)
-# performance::model_performance(composicao)
-# 
-# composicao2 <- lmer(MDS2 ~ mean.temperature + mean.humidity + canopy_cover + understory_height + (1|year.clima), data=data)
-# summary(composicao2)
-# plot(composicao2)
-# performance::check_predictions(composicao2)
-# performance::check_residuals(composicao2)
-# performance::model_performance(composicao2)
