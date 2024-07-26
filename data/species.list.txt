@@ -1,0 +1,71 @@
+"family" "subfamily" "species" "disturbance" "n.ind"
+"1" "Nymphalidae" "Biblidinae" "Biblis hyperia " "high" 12
+"2" "Nymphalidae" "Biblidinae" "Biblis hyperia " "low" 1
+"3" "Nymphalidae" "Biblidinae" "Biblis hyperia " "medium" 10
+"4" "Nymphalidae" "Biblidinae" "Callicore pygas thamiris" "high" 4
+"5" "Nymphalidae" "Biblidinae" "Callicore pygas thamiris" "medium" 1
+"6" "Nymphalidae" "Biblidinae" "Catonephele sabrina" "high" 1
+"7" "Nymphalidae" "Biblidinae" "Catonephele sabrina" "medium" 1
+"8" "Nymphalidae" "Biblidinae" "Diaethria candrena" "high" 2
+"9" "Nymphalidae" "Biblidinae" "Epiphile hubneri" "high" 4
+"10" "Nymphalidae" "Biblidinae" "Epiphile hubneri" "medium" 2
+"11" "Nymphalidae" "Biblidinae" "Eunica eburnea " "high" 115
+"12" "Nymphalidae" "Biblidinae" "Eunica eburnea " "medium" 11
+"13" "Nymphalidae" "Biblidinae" "Hamadryas epinome" "high" 5
+"14" "Nymphalidae" "Biblidinae" "Hamadryas epinome" "medium" 2
+"15" "Nymphalidae" "Biblidinae" "Hamadryas februa" "high" 2
+"16" "Nymphalidae" "Biblidinae" "Temenis laothoe " "high" 1
+"17" "Nymphalidae" "Charaxinae" "Archaeoprepona amphimachus  " "low" 3
+"18" "Nymphalidae" "Charaxinae" "Archaeoprepona amphimachus  " "medium" 4
+"19" "Nymphalidae" "Charaxinae" "Archaeoprepona demophoon " "medium" 4
+"20" "Nymphalidae" "Charaxinae" "Memphis moruus" "high" 2
+"21" "Nymphalidae" "Charaxinae" "Memphis moruus" "low" 10
+"22" "Nymphalidae" "Charaxinae" "Memphis moruus" "medium" 11
+"23" "Nymphalidae" "Charaxinae" "Zaretis strigosus" "high" 138
+"24" "Nymphalidae" "Charaxinae" "Zaretis strigosus" "low" 5
+"25" "Nymphalidae" "Charaxinae" "Zaretis strigosus" "medium" 106
+"26" "Nymphalidae" "Nymphalinae" "Historis acheronta" "high" 1
+"27" "Nymphalidae" "Nymphalinae" "Historis odius" "high" 1
+"28" "Nymphalidae" "Nymphalinae" "Smyrna blomfildia" "high" 6
+"29" "Nymphalidae" "Nymphalinae" "Smyrna blomfildia" "low" 3
+"30" "Nymphalidae" "Nymphalinae" "Smyrna blomfildia" "medium" 7
+"31" "Nymphalidae" "Satyrinae" "Caligo martia" "high" 81
+"32" "Nymphalidae" "Satyrinae" "Caligo martia" "low" 55
+"33" "Nymphalidae" "Satyrinae" "Caligo martia" "medium" 51
+"34" "Nymphalidae" "Satyrinae" "Capronnieria galesus" "high" 38
+"35" "Nymphalidae" "Satyrinae" "Capronnieria galesus" "low" 3
+"36" "Nymphalidae" "Satyrinae" "Capronnieria galesus" "medium" 23
+"37" "Nymphalidae" "Satyrinae" "Catoblepia amphirhoe" "high" 32
+"38" "Nymphalidae" "Satyrinae" "Catoblepia amphirhoe" "low" 3
+"39" "Nymphalidae" "Satyrinae" "Catoblepia amphirhoe" "medium" 13
+"40" "Nymphalidae" "Satyrinae" "Cissia phronius" "high" 467
+"41" "Nymphalidae" "Satyrinae" "Cissia phronius" "low" 26
+"42" "Nymphalidae" "Satyrinae" "Cissia phronius" "medium" 284
+"43" "Nymphalidae" "Satyrinae" "Dynastor darius" "high" 1
+"44" "Nymphalidae" "Satyrinae" "Dynastor darius" "low" 1
+"45" "Nymphalidae" "Satyrinae" "Dynastor darius" "medium" 7
+"46" "Nymphalidae" "Satyrinae" "Eryphanis reevesii " "high" 63
+"47" "Nymphalidae" "Satyrinae" "Eryphanis reevesii " "low" 10
+"48" "Nymphalidae" "Satyrinae" "Eryphanis reevesii " "medium" 17
+"49" "Nymphalidae" "Satyrinae" "Hermeuptychia sp." "high" 20
+"50" "Nymphalidae" "Satyrinae" "Hermeuptychia sp." "low" 1
+"51" "Nymphalidae" "Satyrinae" "Hermeuptychia sp." "medium" 25
+"52" "Nymphalidae" "Satyrinae" "Morpho epistrophus catenaria" "high" 37
+"53" "Nymphalidae" "Satyrinae" "Morpho epistrophus catenaria" "low" 6
+"54" "Nymphalidae" "Satyrinae" "Morpho epistrophus catenaria" "medium" 16
+"55" "Nymphalidae" "Satyrinae" "Opsiphanes cassiae" "high" 1
+"56" "Nymphalidae" "Satyrinae" "Opsiphanes invirae" "high" 104
+"57" "Nymphalidae" "Satyrinae" "Opsiphanes invirae" "low" 11
+"58" "Nymphalidae" "Satyrinae" "Opsiphanes invirae" "medium" 64
+"59" "Nymphalidae" "Satyrinae" "Opsiphanes quiteria" "low" 2
+"60" "Nymphalidae" "Satyrinae" "Opsiphanes quiteria" "medium" 3
+"61" "Nymphalidae" "Satyrinae" "Paryphthimoides poltys" "high" 41
+"62" "Nymphalidae" "Satyrinae" "Paryphthimoides poltys" "low" 2
+"63" "Nymphalidae" "Satyrinae" "Paryphthimoides poltys" "medium" 42
+"64" "Nymphalidae" "Satyrinae" "Paryphthimoides sp. " "high" 16
+"65" "Nymphalidae" "Satyrinae" "Paryphthimoides sp. " "low" 1
+"66" "Nymphalidae" "Satyrinae" "Paryphthimoides sp. " "medium" 11
+"67" "Nymphalidae" "Satyrinae" "Praepedaliodes phanias" "medium" 1
+"68" "Nymphalidae" "Satyrinae" "Taygetis ypthima" "low" 3
+"69" "Nymphalidae" "Satyrinae" "Taygetis ypthima" "medium" 1
+"70" "Nymphalidae" "Satyrinae" "Yphthimoides sp." "medium" 1

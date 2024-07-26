@@ -10,9 +10,10 @@ library(ggrepel)
 
 # species list dataset ----
 load("data/species.list.RData")
-
+#write.table(spp, file = "data/species.list.txt")
 # load variables -----
 load("data/model.vars.RData")
+#write.table(table, file="data/variables.txt")
 
 # data analysis -----
 
