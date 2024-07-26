@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.12980854.svg)](https://doi.org/10.5281/zenodo.12980854)
+
 ### This repository contains the files from the manuscript "*Indirect effects of cattle trampling in the structure of fruit-feeding butterfly assemblages inhabiting Restinga forests in southern Brazil*"
 
 #### from Iserhard et al. 2024 at *Diversity* journal
