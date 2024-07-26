@@ -1,4 +1,14 @@
+# history  and project files
 .Rproj.user
 .Rhistory
-.RData
 .Ruserdata
+
+# scripts
+*-scripts/analysis.R
+*-scripts/means.R
+*-scriptsmap.R
+
+# raw data
+data/*coordenadas.txt
+data/*dados_campo_kmb.csv
+data/*dados_campo2_kmb.csv

@@ -25,7 +25,14 @@ data2 <- data2 %>%
   unite(sampling, c(site,year), sep = "_", remove = FALSE) %>% 
   mutate(understory_height = as.numeric(understory_height),
          canopy_cover = as.numeric(canopy_cover))
-
+# species data to repo ----
+spp <- data1 %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "alto", "high")) %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "medio", "medium")) %>% 
+  mutate(disturbance = replace(disturbance, disturbance == "ausente", "low")) %>% 
+    doBy::summary_by(disturbance~family+subfamily+species+disturbance,FUN=length, keep.names = F) %>% 
+  rename(n.ind = disturbance.length)
+save(spp, file="data/species.list.RData")
 # response variables -----
 community <- reshape2::dcast(data1,  sampling~species, value.var="n.ind",fun.agg = sum)
 community <- community %>% remove_rownames %>% column_to_rownames(var="sampling")
@@ -90,7 +97,25 @@ nmds.scores <- nmds.scores %>%
 teste <- nmds.scores %>%
   group_by(Disturbance) %>%
   slice(chull(MDS1,MDS2))
-
+nmds.scores$sampling = rownames(nmds.scores)
+table = merge(preds, nmds.scores, by.x = "sampling", by.y = "sampling")
+table = merge(table, diversities, by.x = "sampling", by.y = "sampling")
+table = table %>% 
+  dplyr::select(site,year.clima, mean.temperature,mean.humidity,canopy_cover,understory_height,MDS1,MDS2,Disturbance, invsimp.Q2,density.abund,rarefy) %>% 
+  mutate(year.clima = replace(year.clima, year.clima == "Ano1", "year1")) %>% 
+  mutate(year.clima = replace(year.clima, year.clima == "Ano2", "year2")) %>% 
+  mutate(year.clima = replace(year.clima, year.clima == "Ano3", "year3")) %>% 
+  mutate(year.clima = replace(year.clima, year.clima == "Ano4", "year4")) %>% 
+  mutate(year.clima = replace(year.clima, year.clima == "Ano5", "year5")) %>% 
+  rename(random = year.clima,
+         mean_temperature = mean.temperature,
+         mean_humidity = mean.humidity,
+         disturbance = Disturbance,
+         dominance = invsimp.Q2,
+         abundance = density.abund,
+         rarefied_rich = rarefy)
+save(table, file="data/model.vars.RData")
+# --------------
 envs <- preds %>% 
   select(mean.temperature,mean.humidity,canopy_cover,understory_height)
 
