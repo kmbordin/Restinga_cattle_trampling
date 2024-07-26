@@ -4,11 +4,10 @@
 .Ruserdata
 
 # scripts
-*-scripts/analysis.R
-*-scripts/means.R
-*-scripts/map.R
+.R
+!scripts/all.data.analysis.R
 
 # raw data
-data/*coordenadas.txt
-data/*dados_campo_kmb.csv
-data/*dados_campo2_kmb.csv
+/data/coordenadas.txt
+/data/dados_campo_kmb.csv
+/data/dados_campo2_kmb.csv
